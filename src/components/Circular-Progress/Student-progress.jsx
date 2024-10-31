@@ -3,9 +3,6 @@
 import { useEffect, useState } from "react";
 import AnimatedCircularProgressBar from "./Circular-progress";
 
-
-
-
 export default function StudentProgress() {
   const [value, setValue] = useState(0);
 

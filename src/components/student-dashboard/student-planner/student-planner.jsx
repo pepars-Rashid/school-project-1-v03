@@ -1,7 +1,7 @@
 
 import Calander from '@/components/calander';
 import WeekSchedule from './weekSchedule';
-import StudentNav from '@/components/studentNav';
+import StudentNav from '@/components/student-dashboard/studentNav';
 
 export default function StudentPlanner() {
   return (

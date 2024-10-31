@@ -1,6 +1,6 @@
 import Notes from './notes'
 import Degrees from './degrees'
-import StudentNav from '@/components/studentNav'
+import StudentNav from '@/components/student-dashboard/studentNav'
 
 
 export default function StudentHome() {
