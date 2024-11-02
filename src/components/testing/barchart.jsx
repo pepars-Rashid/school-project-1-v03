@@ -30,13 +30,26 @@ const barColors = [
 
 export default function App() {
   return (
-    <div className="p-4">
+    <div className="relative">
       <HorizontalBarChart
         categories={categories}
         initialValues={initialValues}
         barColors={barColors}
-        className="my-4"
+        className=""
       />
+      <Background/>
     </div>
   );
+}
+
+const Background = ()=>{
+  return(
+    <div className="absolute w-[500px] right-0 top-0 h-full flex justify-between -z-10">
+      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+    </div>
+  )
 }
