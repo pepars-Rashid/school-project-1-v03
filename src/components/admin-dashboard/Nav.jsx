@@ -1,25 +1,14 @@
 'use client'
-import React, { Children, useState } from "react";
+import {useState } from "react";
 import {
-  FiChevronDown,
-  FiChevronsLeft,
+  FiChevronLeft,
+  FiChevronsLeft
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-export const Example = () => {
-  return (
-    <div className="flex">
-      <Sidebar />
-      <ExampleContent />
-    </div>
-  );
-};
-
-const Sidebar = () => {
+export default function Sidebar(){
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("الرئيسية");
-  const [isClicked, setIsClicked] = useState(false)
-
   return (
     <motion.nav
       layout
@@ -73,10 +62,13 @@ const Sidebar = () => {
 };
 
 const Option = ({Icon, title, selected, setSelected, open, notifs }) => {
+  const [openDrop, setOpenDrop] = useState(false);
   return (
     <motion.button
       layout
-      onClick={() => setSelected(title)}
+      onClick={() => {setSelected(title)
+                      setOpenDrop(title==='المستخدمين'? !openDrop: false)
+      }}
       className={`relative flex gap-[15px] px-[25px] py-[15px] h-[58px] w-full items-center rounded-[15px] transition-colors ${selected === title ? "bg-[#1D286A]" : "hover:bg-[#1D286A]"}`}
     >
       <motion.div
@@ -95,9 +87,9 @@ const Option = ({Icon, title, selected, setSelected, open, notifs }) => {
         >
         <span>
           {title}
-          {/* <span className={`text-white transform transition-transform duration-300 ${true ? '-rotate-90' : '' } text-[32px]`}>
-            &gt;
-          </span> */}
+        <span className={`absolute text-white transform transition-transform duration-300 ${title==='المستخدمين' ? (openDrop ? '-rotate-90':'') : 'hidden' } text-[32px]`}>
+          <FiChevronLeft/>
+          </span>
         </span>
         </motion.p>
       )}
@@ -122,9 +114,9 @@ const Option = ({Icon, title, selected, setSelected, open, notifs }) => {
 
 const DropdownMenu = ({ selected, setSelected, open}) => {
   const [openDrop, setOpenDrop] = useState(false);
-  const dropArray = ['Dropdown', 'الطلاب', 'المدرسين', 'الموظفين' ]
+  const dropArray = ['المستخدمين', 'الطلاب', 'المدرسين', 'الموظفين' ]
   const toggleDropdown = () => {
-    setSelected('Dropdown')
+    setSelected('المستخدمين')
     setOpenDrop(!openDrop);
   };
 
@@ -133,7 +125,7 @@ const DropdownMenu = ({ selected, setSelected, open}) => {
       <div className={`rounded-[15px] ${dropArray.includes(selected) ? 'bg-[#1D286A]': ''}`}>
       <Option 
         Icon={Icons.users} 
-        title="Dropdown" 
+        title='المستخدمين'
         selected={selected} 
         setSelected={toggleDropdown} 
         open={open} 
@@ -155,60 +147,6 @@ const DropdownMenu = ({ selected, setSelected, open}) => {
         </motion.div>
       )}
     </div>
-  );
-};
-
-
-
-const TitleSection = ({ open }) => {
-  return (
-    <div className="mb-3 border-b border-slate-300 pb-3">
-      <div className="flex cursor-pointer items-center justify-between rounded-md transition-colors hover:bg-slate-100">
-        <div className="flex items-center gap-2">
-          <Logo />
-          {open && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.125 }}
-            >
-              <span className="block text-xs font-semibold">TomIsLoading</span>
-              <span className="block text-xs text-slate-500">Pro Plan</span>
-            </motion.div>
-          )}
-        </div>
-        {open && <FiChevronDown className="mr-2" />}
-      </div>
-    </div>
-  );
-};
-
-const Logo = () => {
-  // Temp logo from https://logoipsum.com/
-  return (
-    <motion.div
-      layout
-      className="grid size-10 shrink-0 place-content-center rounded-md bg-indigo-600"
-    >
-      <svg
-        width="24"
-        height="auto"
-        viewBox="0 0 50 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="fill-slate-50"
-      >
-        <path
-          d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-          stopColor="#000000"
-        ></path>
-        <path
-          d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
-          stopColor="#000000"
-        ></path>
-      </svg>
-    </motion.div>
   );
 };
 
@@ -275,31 +213,3 @@ const Icons = {
     </svg>
   ),
 }
-
-const users = ()=> {
-  <div>
-    <Option
-          Icon={Icons.users}
-          title="المستخدمين"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
-    <Option
-          Icon={Icons.users}
-          title="المستخدمين"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />
-    <Option
-          Icon={Icons.users}
-          title="المستخدمين"
-          selected={selected}
-          setSelected={setSelected}
-          open={open}
-        />    
-  </div>
-}
-
-const ExampleContent = () => <div className="h-[200vh] w-full"></div>;
