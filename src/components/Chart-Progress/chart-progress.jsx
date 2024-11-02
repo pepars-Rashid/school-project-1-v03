@@ -9,7 +9,7 @@ export default function AnimatedChartProgressBar({
   const currentPercent = ((value - min) / (max - min)) * 100;
 
   return (
-    <div className={`${className} relative w-[500px] h-8 bg-gray-200 bg-opacity-85 rounded-r-full`} style={{ backgroundColor }}>
+    <div className={`${className} relative w-[500px] h-8 bg-[#7164FA] bg-opacity-15 rounded-r-full`} style={{ backgroundColor }}>
       <div
         className="absolute top-0 left-0 h-full bg-blue-500 rounded-r-full"
         style={{

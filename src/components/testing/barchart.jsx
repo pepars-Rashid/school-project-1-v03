@@ -45,11 +45,11 @@ export default function App() {
 const Background = ()=>{
   return(
     <div className="absolute w-[500px] right-0 top-0 h-full flex justify-between -z-10">
-      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
-      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
-      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
-      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
-      <div  className="w-[2px] h-full bg-[#7E7F80]"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
     </div>
   )
 }
