@@ -18,7 +18,7 @@ export default function StaggeredDropDown(){
       <motion.div animate={open ? "open" : "closed"} className="relative">
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className="flex w-[320px] h-[50px] items-center justify-between px-3 py-2 rounded-[15px] text-indigo-50 bg-[#7164FA] hover:bg-indigo-500 transition-colors"
+          className="flex w-[320px] h-[50px] items-center justify-between px-3 py-2 rounded-[15px] text-indigo-50 bg-[#7164FA]"
         >
           <div className="flex gap-[10px]">
             <Icons.math/>
