@@ -10,9 +10,7 @@ export default function StudentHome() {
       <div className='flex flex-col gap-[20px]'>
       <Notes/>
       <Degrees/>
-
       </div>
-      <StudentNav/>
     </div>
     </>
   )

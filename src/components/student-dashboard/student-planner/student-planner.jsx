@@ -35,7 +35,6 @@ export default function StudentPlanner() {
           <p className='text-[12px]'>يوم مذاكرة</p>
         </div>
       </div>
-      <StudentNav/>
     </div>
   )
 }
