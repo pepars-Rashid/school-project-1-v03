@@ -1,12 +1,15 @@
 import React from 'react'
+import StaggeredDropDown from './straggedDropdown'
 
 export default function StudentResources() {
   return (
     <div className='flex flex-col items-center gap-[10px]'>
-
-      <div className='relative flex flex-col justify-between w-[360px] h-[175px] bg-[#6255FA] rounded-b-[25px] p-[25px]'>
+      <div className='relative flex flex-col gap-[47px] w-[360px] h-[230px] bg-[#6255FA] rounded-b-[25px] p-[25px]'>
         <div className='z-10 size-[50px] bg-[#B1D4FE] border-[2px] rounded-[15px]'></div>
-        <p dir='rtl' className='text-[24px] font-semibold text-white'>الملفات</p>
+        <div dir='rtl' className='relative'>
+          <p className='text-[24px] font-semibold text-white mb-[10px]'>الملفات</p>
+          <StaggeredDropDown/>
+        </div>
         <Background/>
       </div>
     </div>
