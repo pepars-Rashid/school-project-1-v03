@@ -13,8 +13,24 @@ export default function StudentResources() {
         <Background/>
       </div>
 
-      <div dir='rtl' className='w-[340px] h-[310px] bg-white rounded-[10px] p-[15px]'>
-        
+      <div dir='rtl' className='flex w-[340px] h-[310px] bg-white rounded-[10px] p-[20px]'>
+        <div className='flex justify-between items-center h-fit w-full'>
+          <div className='flex items-center gap-[10px] text-[10px]'>
+            <Icons.pdf/>
+            <div className=''>
+              <p>Practical-lab-math-1.pdf</p>
+              <p>size: 2.06 MB</p>
+            </div>
+          </div>
+          <div className='flex flex-col gap-[5px] w-[64px] h-[50px] text-[10px]'>
+            <button className="h-[20px] bg-indigo-600 text-white rounded">
+              دراسة
+            </button>
+            <button className="h-[20px] border border-indigo-600 text-indigo-600 rounded">
+              تحميل
+            </button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -39,3 +55,12 @@ const Background = ()=>{
     </>
   )
 }
+
+const Icons = {
+  pdf: () => (
+    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.26702 12.68C4.08302 12.68 3.95902 12.698 3.89502 12.716V13.894C3.97102 13.912 4.06602 13.917 4.19702 13.917C4.67602 13.917 4.97102 13.675 4.97102 13.266C4.97102 12.9 4.71702 12.68 4.26702 12.68ZM7.75402 12.692C7.55402 12.692 7.42402 12.71 7.34702 12.728V15.338C7.42402 15.356 7.54802 15.356 7.66002 15.356C8.47702 15.362 9.00902 14.912 9.00902 13.96C9.01502 13.13 8.53002 12.692 7.75402 12.692Z" fill="#7164FA"/>
+      <path d="M10 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V18C0 18.5304 0.210714 19.0391 0.585786 19.4142C0.960859 19.7893 1.46957 20 2 20H14C14.5304 20 15.0391 19.7893 15.4142 19.4142C15.7893 19.0391 16 18.5304 16 18V6L10 0ZM5.498 14.19C5.189 14.48 4.733 14.61 4.202 14.61C4.09904 14.6111 3.99613 14.6051 3.894 14.592V16.018H3V12.082C3.40345 12.0218 3.81112 11.9944 4.219 12C4.776 12 5.172 12.106 5.439 12.319C5.693 12.521 5.865 12.852 5.865 13.242C5.864 13.634 5.734 13.965 5.498 14.19ZM9.305 15.545C8.885 15.894 8.246 16.06 7.465 16.06C6.997 16.06 6.666 16.03 6.441 16V12.083C6.8446 12.0241 7.25214 11.9963 7.66 12C8.417 12 8.909 12.136 9.293 12.426C9.708 12.734 9.968 13.225 9.968 13.93C9.968 14.693 9.689 15.22 9.305 15.545ZM13 12.77H11.468V13.681H12.9V14.415H11.468V16.019H10.562V12.03H13V12.77ZM10 7H9V2L14 7H10Z" fill="#7164FA"/>
+    </svg>
+  ),
+};
