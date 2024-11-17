@@ -12,6 +12,11 @@ export default function StudentResources() {
         </div>
         <Background/>
       </div>
+
+      <div dir='rtl' className='w-[340px] h-[310px] bg-white rounded-[10px] p-[15px]'>
+        
+      </div>
+
     </div>
   )
 }
