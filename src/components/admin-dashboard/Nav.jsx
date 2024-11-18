@@ -6,7 +6,7 @@ import {
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-export default function Sidebar(){
+export default function SidebarX(){
   const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("الرئيسية");
   return (
