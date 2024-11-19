@@ -12,7 +12,7 @@ const ThreeDotsMenu = () => {
   return (
     <div className="relative inline-block text-right">
       <button onClick={toggleMenu} className="flex items-center">
-        <FiMoreVertical className="text-[#7164FA] cursor-pointer size-[20px] p-[2px] rounded-[5px] hover:bg-gray-100" />
+        <FiMoreVertical className="text-[#7164FA] cursor-pointer size-[20px] p-[2px] rounded-[5px] hover:bg-gray-50" />
       </button>
       {isOpen && (
         <div className="absolute right-0 mt-[5px] w-48 rounded-md shadow-xl bg-white ring-1 ring-black ring-opacity-5 z-10">
