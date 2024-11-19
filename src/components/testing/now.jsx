@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import {
   FiChevronDown,
-  FiChevronUp,
   FiMoreVertical,
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
@@ -35,7 +34,7 @@ export default function DegreeLevels() {
   };
 
   return (
-    <div dir='rtl' className="p-[10px]">
+    <div dir='rtl' className="p-[10px] over-flow-">
       <button className="">إضافة</button>
       {levels.map((level, index) => (
         <div  key={index} className="relative level" 
@@ -86,12 +85,4 @@ const TitleSection = () => {
       <div className="h-0.5 w-full bg-slate-300 mb-6"/>
     </>
   );
-};
-
-const Icons = {
-  home: (props) => <FiHome {...props} />,
-  users: (props) => <FiUsers {...props} />,
-  mailBox: (props) => <FiMail {...props} />,
-  appManagement: (props) => <FiSettings {...props} />,
-  settings: (props) => <FiSettings {...props} />,
 };

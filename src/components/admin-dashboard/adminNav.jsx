@@ -1,15 +1,7 @@
 'use client';
 import React, { useState } from "react";
 import {
-  FiBarChart,
   FiChevronDown,
-  FiChevronUp,
-  FiDollarSign,
-  FiHome,
-  FiMonitor,
-  FiShoppingCart,
-  FiTag,
-  FiUsers,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 
