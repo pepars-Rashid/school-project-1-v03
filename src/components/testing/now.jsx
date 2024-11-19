@@ -1,10 +1,13 @@
 'use client';
 import React, { useState } from 'react';
 import {
+  FiArrowLeft,
+  FiPlus,
   FiChevronDown,
   FiMoreVertical,
 } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import ThreeDotsMenu from './threeDots';
 
 export default function DegreeLevels() {
   const [levels, setLevels] = useState([
@@ -34,18 +37,26 @@ export default function DegreeLevels() {
   };
 
   return (
-    <div dir='rtl' className="p-[10px] over-flow-">
-      <button className="">إضافة</button>
+    <div dir='rtl' className="flex flex-col gap-[5px] p-[10px]">
+      <div className='flex justify-between items-center'>
+      <button className="flex justify-center items-center gap-[5px] w-[75px] h-[35px] bg-slate-100 text-[12px] font-semibold rounded-[5px] border-[3px] border-[#BFBFBF]">
+        <FiPlus/>
+        <span>إضافة</span>
+      </button>
+      <span className='text-[16px] font-semibold'>الصفوف و الشعب</span>
+      </div>
+
+      <div className='h-[3px] my-[5px] bg-[#BFBFBF]'/>
       {levels.map((level, index) => (
-        <div  key={index} className="relative level" 
-            onClick={() => toggleDropdown(index)}
-        >
-          <div className="level-header flex items-center justify-between p-2 bg-gray-100 rounded mt-2">
-            
+        <div  key={index} className="relative p-[10px] rounded-[5px] outline outline-[2px] outline-offset-[-2px] outline-[#BFBFBF] level">
+          
+          <div className="level-header flex items-center justify-between h-fit bg-gray-1 rounded hover:bg-gray-100"
+              onClick={() => toggleDropdown(index)}
+          > 
             <span className='flex items-center gap-[12px]'>
-              <FiMoreVertical className='cursor-pointer' 
-                              onClick={() => handleAction('menu')} 
-              />
+                    <ThreeDotsMenu
+                                onClick={() => handleAction('menu')} 
+                    />
               {level.name}
             </span>
             <div className="flex items-center">
@@ -53,15 +64,16 @@ export default function DegreeLevels() {
             </div>
           </div>
           {level.isOpen && (
-            <div className="ml-4 mt-2">
+            <div className="">
               {level.sections.map((section, secIndex) => (
-                <div key={secIndex} className="section flex items-center justify-between p-2 bg-gray-200 rounded mt-1">
+                <div key={secIndex} className="hover:bg-gray-300 section flex items-center justify-between bg-gray-2 rounded mt-1">
                   <span className='flex items-center gap-[12px]'>
-                    <FiMoreVertical className='cursor-pointer' 
+                    <ThreeDotsMenu
                                 onClick={() => handleAction('menu')} 
                     />
                     {section}
                   </span>
+                  <FiArrowLeft/>
                 </div>
               ))}
             </div>
