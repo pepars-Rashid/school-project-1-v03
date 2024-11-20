@@ -1,4 +1,5 @@
 import Sidebar from '@/components/admin-dashboard/adminNav'
+import ColumnDiagram1 from '@/components/testing/h-barchart'
 import DegreeLevels from '@/components/testing/now'
 
 
@@ -13,7 +14,7 @@ export default function page() {
         <div className="rounded-[15px] border-[3px] border-[#BFBFBF] "><DegreeLevels/></div>
       </div>
 
-      <div className="w-full rounded-[15px] border-[3px] border-[#BFBFBF]">Second Row</div>
+      <div className="w-full rounded-[15px] border-[3px] border-[#BFBFBF]"><ColumnDiagram1/> </div>
     
       </div>
       <Sidebar/>

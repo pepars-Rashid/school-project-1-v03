@@ -50,6 +50,7 @@ const Background = ()=>{
       <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
       <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
       <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
+      <div  className="w-[2px] h-full bg-[#7E7F80]  bg-opacity-25"></div>
     </div>
   )
 }
