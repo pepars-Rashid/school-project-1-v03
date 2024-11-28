@@ -8,17 +8,14 @@ import DegreeLevels from '@/components/testing/now'
 
 export default function page() {
   return (
-    <div className='flex'>
-      <div className='flex-grow grid grid-rows-[57%_40%] gap-[3%] pr-[25px] pl-[50px] pt-[100px] pb-[50px]'>
-      
-      <div className="grid grid-cols-[71%_27%] gap-[2%]">
-        <div className="rounded-[15px] border-[3px] border-[#BFBFBF] "><EditableTable/></div>
-        <div className="rounded-[15px] border-[3px] border-[#BFBFBF] "><Classification/></div>
-      </div>
-
-      <div className="w-full rounded-[15px] border-[3px] border-[#BFBFBF]"><ColumnDiagram1/> </div>
-    
-      </div>
+    <div className='flex h-screen'>
+      <div className='flex-grow w-full flex flex-wrap gap-[3%] pr-[25px] pl-[50px] pt-[100px] pb-[50px]'>
+        <div className="h-[58%] w-full flex flex-wrap gap-[2%]">
+          <div className="w-[71%] min-w-[300] h-full overflow-scroll rounded-[15px] border-[3px] border-[#BFBFBF]"><EditableTable/></div>
+          <div className="w-[27%] min-w-[200] h-full overflow-y-scroll rounded-[15px] border-[3px] border-[#BFBFBF]"><Classification/></div>
+        </div>
+      <div className="w-full h-[40%] rounded-[15px] border-[3px] border-[#BFBFBF]"><ColumnDiagram1/></div>
+    </div>
       <Sidebar/>
     </div>
   )

@@ -51,7 +51,7 @@ export default function ColumnDiagram1({ diagramHeight = '70%' }){
       animate="visible"
     >
       <div className="flex justify-between items-center">
-        <h1 className="text-left text-gray-400 text-xl font-semibold">Column Diagram</h1>
+        <h1 className="text-left text-gray-400 text-sm font-semibold">Column Diagram</h1>
         <div className="flex items-center">
           <div className="bg-[#7164FA] rounded-lg h-1 w-8 mr-2"></div>
           <h1 className="text-gray-400 text-sm">Legend</h1>
@@ -70,7 +70,7 @@ export default function ColumnDiagram1({ diagramHeight = '70%' }){
           {columns.map((column, index) => (
             <motion.div
               key={index}
-              className="bg-[#7164FA] w-[50px] rounded-t-lg relative group"
+              className="bg-[#7164FA] rounded-t-lg relative group"
               style={{ flex: `1 1 calc(100% / ${columns.length} - 0.5rem)`, height: column.height }}
               custom={column.height}
               variants={columnVariants}

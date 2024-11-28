@@ -1,12 +1,19 @@
 'use client'
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { FiArrowLeft, FiPlus, FiChevronDown, FiMoreVertical } from 'react-icons/fi';
+import { FiArrowLeft, FiPlus, FiChevronDown, FiMoreVertical, FiDelete, FiX, FiCheck } from 'react-icons/fi';
 
 const Classification = () => {
   const [isAdding, setIsAdding] = useState(false);
+  const [tempLevel, setTempLevel] = useState('');
   const [levels, setLevels] = useState([
     { name: 'الصف الأول', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
     { name: 'الصف الثاني', sections: [], isOpen: false },
+    { name: 'الصف 2', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
+    { name: 'الصف 3', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
+    { name: 'الصف 4', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
+    { name: 'الصف 5', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
+    { name: 'الصف 6', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
+    { name: 'الصف 7', sections: ['الشعبة الأولى', 'الشعبة الثانية'], isOpen: false },
   ]);
 
   const toggleDropdown = useCallback((index) => {
@@ -15,11 +22,13 @@ const Classification = () => {
     );
   }, []);
 
-  const handleAction = (e, action, levelIndex, sectionIndex) => {
-    e.preventDefault();
+  const handleAction = (action, levelIndex, sectionIndex, e) => {
+    
     // Handle add, delete, rename actions here
     switch (action) {
       case 'add':
+        // setLevels([...levels, {name:tempLevel, sections:[], isOpen:false}])
+        // setTempLevel('')
         // Implement add functionality
         break;
       case 'delete':
@@ -34,52 +43,71 @@ const Classification = () => {
   };
 
   return (
-    <div dir="rtl" className="flex flex-col gap-[5px] p-[10px]">
-      <div className="flex justify-between items-center">
+    <div dir="rtl">
+      <div className="flex justify-between items-center p-[10px]">
         <button
-          onClick={() => setIsAdding(!isAdding)}
-          className="flex justify-center items-center gap-[5px] w-[75px] h-[35px] bg-slate-100 text-[12px] font-semibold rounded-[5px] border-[3px] border-[#BFBFBF]"
+          onClick={() => setIsAdding(true)}
+          className={`${isAdding? '' : ''} flex justify-center items-center gap-[5px] w-[75px] h-[35px] bg-slate-100 text-[12px] font-semibold rounded-[5px] border-[3px] border-[#BFBFBF]`}
         >
-          <FiPlus />
-          <span>إضافة</span>
+          <FiPlus className={`${isAdding && 'text-[20px] text-green-700'}`}/>
+          <span>{!isAdding && 'إضافة'}</span>
         </button>
         <span className="text-[16px] font-semibold">الصفوف و الشعب</span>
       </div>
 
-      <div className="h-[3px] my-[5px] bg-[#BFBFBF]" />
-      {levels.map((level, index) => (
-        <div key={index} className="relative">
-          <button
-            className={`w-full h-[34px] px-[10px] flex justify-start items-center border-[#BFBFBF] ${level.isOpen? 'rounded-t-[5px] border-t-[3px] border-r-[3px]': 'rounded-[5px] border-[3px]'} border-l-[3px] text-black hover:bg-gray-100 focus:outline-none focus:ring-blue-300 font-medium text-sm dark:hover:bg-gray-100 dark:focus:ring-blue-800`}
-            onClick={() => toggleDropdown(index)}
-          >
-            <ThreeDotsMenu handleAction={handleAction} />
-            <span className="w-full flex justify-between items-center">
-              {level.name}
-              <FiChevronDown
-                className={`${level.isOpen && 'transform rotate-180 transition duration-500'} transform transition duration-500`}
-              />
-            </span>
-          </button>
-          {level.isOpen && (
-            <div className="z-10 rounded-b-[5px] border-[#BFBFBF] border-b-[3px] border-r-[3px] border-l-[3px] bg-white divide-y divide-gray-100 dark:bg-white">
-              <ul className="text-sm text-black">
-                {level.sections.map((section, secIndex) => (
-                  <li key={secIndex}>
-                    <button className="w-full h-[34px] flex justify-between px-[10px] items-center hover:bg-gray-100 dark:hover:bg-gray-100">
-                      <span className="flex items-center gap-[12px]">
-                        <ThreeDotsMenu handleAction={handleAction} />
-                        {section}
-                      </span>
-                      <FiArrowLeft />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      ))}
+      <div className="h-[3px] bg-[#BFBFBF]"/>
+
+      <div className='flex flex-col gap-[5px] p-[10px]'>
+        {isAdding && (
+        <form className='flex gap-[5px] justify-start items-center w-full h-[34px] px-[5px] border-[3px]'
+              onSubmit={handleAction('add')}
+        >
+          <div className='cursor-pointer' onClick={() => {setIsAdding(false)}}>
+            <FiX className='text-red-600 text-[20px]'/>
+          </div>
+          <input className='w-full px-[5px] border-[2px] border-blue-200'
+            type="text"
+            value={tempLevel}
+            onChange={(e) => setTempLevel(e.target.value)}
+            required 
+          />
+        </form>
+        )}
+
+        {levels.map((level, index) => (
+          <div key={index} className="relative">
+            <button
+              className={`w-full h-[34px] px-[10px] flex justify-start items-center border-[#BFBFBF] ${level.isOpen? 'rounded-t-[5px] border-t-[3px] border-r-[3px]': 'rounded-[5px] border-[3px]'} border-l-[3px] text-black hover:bg-gray-100 focus:outline-none focus:ring-blue-300 font-medium text-sm dark:hover:bg-gray-100 dark:focus:ring-blue-800`}
+              onClick={() => toggleDropdown(index)}
+            >
+              <ThreeDotsMenu handleAction={handleAction} />
+              <span className="w-full flex justify-between items-center">
+                {level.name}
+                <FiChevronDown
+                  className={`${level.isOpen && 'transform rotate-180 transition duration-500'} transform transition duration-500`}
+                />
+              </span>
+            </button>
+            {level.isOpen && (
+              <div className="z-10 rounded-b-[5px] border-[#BFBFBF] border-b-[3px] border-r-[3px] border-l-[3px] bg-white divide-y divide-gray-100 dark:bg-white">
+                <ul className="text-sm text-black">
+                  {level.sections.map((section, secIndex) => (
+                    <li key={secIndex}>
+                      <button className="w-full h-[34px] flex justify-between px-[10px] items-center hover:bg-gray-100 dark:hover:bg-gray-100">
+                        <span className="flex items-center gap-[12px]">
+                          <ThreeDotsMenu handleAction={handleAction} />
+                          {section}
+                        </span>
+                        <FiArrowLeft />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
