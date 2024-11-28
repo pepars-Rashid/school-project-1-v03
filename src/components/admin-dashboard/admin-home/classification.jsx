@@ -27,7 +27,10 @@ const Classification = () => {
     // Handle add, delete, rename actions here
     switch (action) {
       case 'add':
-        // setLevels([...levels, {name:tempLevel, sections:[], isOpen:false}])
+        // console.error('addp')
+        setLevels([...levels, {name:tempLevel, sections:[], isOpen:false}])
+        setIsAdding(false)
+        setTempLevel('')
         // setTempLevel('')
         // Implement add functionality
         break;
@@ -46,7 +49,7 @@ const Classification = () => {
     <div dir="rtl">
       <div className="flex justify-between items-center p-[10px]">
         <button
-          onClick={() => setIsAdding(true)}
+          onClick={() => {isAdding? handleAction('add') : setIsAdding(true)}}
           className={`${isAdding? '' : ''} flex justify-center items-center gap-[5px] w-[75px] h-[35px] bg-slate-100 text-[12px] font-semibold rounded-[5px] border-[3px] border-[#BFBFBF]`}
         >
           <FiPlus className={`${isAdding && 'text-[20px] text-green-700'}`}/>
@@ -60,9 +63,9 @@ const Classification = () => {
       <div className='flex flex-col gap-[5px] p-[10px]'>
         {isAdding && (
         <form className='flex gap-[5px] justify-start items-center w-full h-[34px] px-[5px] border-[3px]'
-              onSubmit={handleAction('add')}
+              onSubmit={(e) => {e.preventDefault(); handleAction('add')}}
         >
-          <div className='cursor-pointer' onClick={() => {setIsAdding(false)}}>
+          <div className='cursor-pointer' onClick={() => {setIsAdding(false); setTempLevel('')}}>
             <FiX className='text-red-600 text-[20px]'/>
           </div>
           <input className='w-full px-[5px] border-[2px] border-blue-200'
