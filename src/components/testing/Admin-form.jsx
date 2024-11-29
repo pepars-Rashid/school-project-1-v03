@@ -58,9 +58,9 @@ export default function EditableTable(){
 
   return (
     
-    <div dir="rtl" className="">
+    <div className="flex flex-col h-full">
 
-      <div className="flex justify-between items-center py-[10px] pr-[10px] pl-[25px]">
+      <div dir="rtl" className="flex justify-between items-center py-[10px] pr-[10px] pl-[25px]">
         <div className='flex gap-[10px]'>
           <Button Icon={FiPlus} action={()=>{}} isActive={true}>إضافة</Button>
           <Button Icon={FiEdit} action={() => rows.forEach((_, index) => handleEditableChange(index))} isActive={isAnyChecked}>تعديل</Button>
@@ -71,37 +71,39 @@ export default function EditableTable(){
 
       <div className="h-[3px] bg-[#BFBFBF]" />
 
-      <div className='w-full flex gap-[10px] pr-[10px]'>
-        <div className='flex gap-[10px] w-[70px]'>
-          <input 
-            type="checkbox" 
-            onChange={handleSelectAll} 
-            checked={rows.every(row => row.isChecked)}
-          />
-          <label>الكل</label>
+      <div className='flex-grow overflow-auto'>
+        <div dir="rtl" className='flex gap-[10px] pr-[10px]'>
+          <div className='flex gap-[10px] w-[70px]'>
+            <input 
+              type="checkbox" 
+              onChange={handleSelectAll} 
+              checked={rows.every(row => row.isChecked)}
+            />
+            <label>الكل</label>
+          </div>
+          <label className='w-[80px] text-center'>الرقم</label>
+          <label className='flex-grow'>الإعلان</label>
         </div>
-        <label className='w-[80px] text-center'>الرقم</label>
-        <label className='flex-grow'>الإعلان</label>
-      </div>
 
-      {rows.map((row, index) => (
-        <div key={index} className="flex items-center">
-          <EditableRow
-            id={row.id}
-            value={row.value}
-            isChecked={row.isChecked}
-            isEditable={row.isEditable}
-            onChange={(e) => handleInputChange(index, e)}
-            onCheck={(e)=> handleCheckboxChange(index, e)}
-          />
-          {/* <input
-            type="checkbox"
-            checked={row.isEditable}
-            onChange={() => handleCheckboxChange(index)}
-            className="ml-2"
-          /> */}
-        </div>
-      ))}
+        {rows.map((row, index) => (
+          <div dir="rtl" key={index} className="flex items-center">
+            <EditableRow
+              id={row.id}
+              value={row.value}
+              isChecked={row.isChecked}
+              isEditable={row.isEditable}
+              onChange={(e) => handleInputChange(index, e)}
+              onCheck={(e)=> handleCheckboxChange(index, e)}
+            />
+            {/* <input
+              type="checkbox"
+              checked={row.isEditable}
+              onChange={() => handleCheckboxChange(index)}
+              className="ml-2"
+            /> */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

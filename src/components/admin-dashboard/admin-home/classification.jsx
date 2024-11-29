@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { FiArrowLeft, FiPlus, FiChevronDown, FiMoreVertical, FiDelete, FiX, FiCheck } from 'react-icons/fi';
 
-const Classification = () => {
+export default function Classification(){
   const [isAdding, setIsAdding] = useState(false);
   const [tempLevel, setTempLevel] = useState('');
   const [levels, setLevels] = useState([
@@ -46,8 +46,8 @@ const Classification = () => {
   };
 
   return (
-    <div dir="rtl">
-      <div className="flex justify-between items-center p-[10px]">
+    <div className='flex flex-col h-full'>
+      <div dir="rtl" className="flex justify-between items-center p-[10px]">
         <button
           onClick={() => {isAdding? handleAction('add') : setIsAdding(true)}}
           className={`${isAdding? '' : ''} flex justify-center items-center gap-[5px] w-[75px] h-[35px] bg-slate-100 text-[12px] font-semibold rounded-[5px] border-[3px] border-[#BFBFBF]`}
@@ -60,9 +60,9 @@ const Classification = () => {
 
       <div className="h-[3px] bg-[#BFBFBF]"/>
 
-      <div className='flex flex-col gap-[5px] p-[10px]'>
+      <div className='flex-grow overflow-y-auto flex flex-col gap-[5px] p-[10px]'>
         {isAdding && (
-        <form className='flex gap-[5px] justify-start items-center w-full h-[34px] px-[5px] border-[3px]'
+        <form dir="rtl" className='flex gap-[5px] justify-start items-center w-full h-[34px] px-[5px] border-[3px]'
               onSubmit={(e) => {e.preventDefault(); handleAction('add')}}
         >
           <div className='cursor-pointer' onClick={() => {setIsAdding(false); setTempLevel('')}}>
@@ -76,9 +76,9 @@ const Classification = () => {
           />
         </form>
         )}
-
+        
         {levels.map((level, index) => (
-          <div key={index} className="relative">
+          <div dir="rtl" key={index} className="">
             <button
               className={`w-full h-[34px] px-[10px] flex justify-start items-center border-[#BFBFBF] ${level.isOpen? 'rounded-t-[5px] border-t-[3px] border-r-[3px]': 'rounded-[5px] border-[3px]'} border-l-[3px] text-black hover:bg-gray-100 focus:outline-none focus:ring-blue-300 font-medium text-sm dark:hover:bg-gray-100 dark:focus:ring-blue-800`}
               onClick={() => toggleDropdown(index)}
@@ -138,16 +138,13 @@ const ThreeDotsMenu = ({ handleAction }) => {
         <FiMoreVertical className="text-[#7164FA] cursor-pointer size-[20px] p-[2px] rounded-[5px] hover:bg-gray-50" />
       </div>
       {isOpen && (
-        <div className="absolute right-0 mt-[5px] w-48 rounded-md shadow-xl bg-white ring-1 ring-black ring-opacity-5 z-10">
+        <div className="z-10 absolute mt-[5px] w-48 rounded-md shadow-xl bg-white ring-1 ring-black ring-opacity-5">
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-            <div onClick={(e) => handleAction(e, 'add')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Add</div>
-            <div onClick={(e) => handleAction(e, 'edit')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Edit</div>
-            <div onClick={(e) => handleAction(e, 'delete')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Delete</div>
+            <div onClick={(e) => handleAction('add')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Add</div>
+            <div onClick={(e) => handleAction('edit')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Edit</div>
+            <div onClick={(e) => handleAction('delete')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Delete</div>
           </div>
         </div>
       )}
     </div>
-  );
-};
-
-export default Classification;
+  )};
